@@ -6,12 +6,23 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
+import { LoginComponent } from '../app/views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
+//--
+//import { DashboardComponent } from './views/dashboard/dashboard.component';
+
+import { HomeComponent } from './views/home/home.component';
+// import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './views/_helpers/auth.guard';
+
 export const routes: Routes = [
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   {
     path: '',
+    // component: DashboardComponent,
+    canActivate: [AuthGuard],
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
@@ -50,6 +61,14 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'customers',
+        loadChildren: () => import('./views/customers/customers.module').then(m => m.CustomersModule)
+      },
+      {
+        path: 'merchants',
+        loadChildren: () => import('./views/merchants/merchants.module').then(m => m.MerchantsModule)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)

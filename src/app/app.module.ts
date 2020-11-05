@@ -1,5 +1,17 @@
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,APP_INITIALIZER } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { JwtInterceptor,  } from './views/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './views/_helpers/error.interceptor';
+import { appInitializer } from './views/_helpers/app.initializer';
+import { AuthenticationService } from './views/_services/authentication.service';
+import { HomeComponent } from './views/home/home.component';
+// import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { LoginComponent } from './views/login/login.component';
+
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,7 +30,7 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
+// import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
@@ -41,6 +53,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 
+// import { MerchantComponent } from './views/merchant/merchant.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -54,7 +68,10 @@ import { ChartsModule } from 'ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
@@ -62,12 +79,21 @@ import { ChartsModule } from 'ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    // DashboardComponent
   ],
   providers: [{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+    useClass: HashLocationStrategy,
+  },
+  { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthenticationService] },
+  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  // [AuthenticationService],
+  // provider used to create fake backend
+  // fakeBackendProvider
+],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

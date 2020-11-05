@@ -8,15 +8,15 @@ Following these guidelines helps to communicate that you respect the time of the
 
 ## Using the issue tracker
 
-The [issue tracker](https://github.com/coreui/coreui-free-angular-admin-template/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following restrictions:
+The [issue tracker](https://gitlab.com/coreui/coreui-free-angular-admin-template/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.
 
 * Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
-  Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
+  Use [Gitlab's "reactions" feature](https://gitlab.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
   instead.
 
-* Please **do not** open issues or pull requests regarding the code in  [`@coreui/coreui`](https://github.com/coreui/coreui) and [`@coreui/coreui-angular`](https://github.com/coreui/coreui) (open them in their respective repositories).
+* Please **do not** open issues or pull requests regarding the code in  [`@coreui/coreui`](https://gitlab.com/coreui/coreui) and [`@coreui/coreui-angular`](https://gitlab.com/coreui/coreui) (open them in their respective repositories).
 
 ## Bug reports
 
@@ -27,7 +27,7 @@ Guidelines for bug reports:
 
 0. **Validate and lint your code** &mdash; to ensure your problem isn't caused by a simple error in your own code.
 
-1. **Use the GitHub issue search** &mdash; check if the issue has already been reported.
+1. **Use the gitlab issue search** &mdash; check if the issue has already been reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the latest `master` or development branch in the repository.
 
@@ -81,16 +81,16 @@ project's developers might not want to merge into the project.
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.gitlab.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/free-angular-admin-template.git
+   git clone https://gitlab.com/<your-username>/free-angular-admin-template.git
    # Navigate to the newly cloned directory
    cd free-angular-admin-template
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/coreui/coreui-free-angular-admin-template.git
+   git remote add upstream https://gitlab.com/coreui/coreui-free-angular-admin-template.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -110,7 +110,7 @@ included in the project:
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely to be merged into the main project. Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   [interactive rebase](https://help.gitlab.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
@@ -125,7 +125,7 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description against the `master` branch.
+7. [Open a Pull Request](https://help.gitlab.com/articles/using-pull-requests/) with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to license your work under the terms of the [MIT License](LICENSE).
 
@@ -165,7 +165,7 @@ Inspired by Sparkbox's awesome article on [semantic commit messages](http://sees
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
-- Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
+- Don't use [jQuery event alias convenience methods](https://gitlab.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
 
 ## License
 

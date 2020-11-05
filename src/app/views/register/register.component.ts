@@ -8,4 +8,9 @@ export class RegisterComponent {
 
   constructor() { }
 
+  onSubmit()
+  {
+    
+  }
+
 }
