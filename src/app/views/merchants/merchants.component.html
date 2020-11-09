@@ -67,7 +67,7 @@
                     <p-inputSwitch (onChange)="statusChange(merchantList.id,merchantList.active)" [(ngModel)]="merchantList.active"></p-inputSwitch>
                 </td>
                 <td>
-                    <button (click)="merchantDetails(merchantList.id)" pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"></button>
+                    <a [routerLink]="['/merchants/merchant-details']" [queryParams]="{MerchantId: merchantList.id}" pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"></a>
                 </td>
                 <!-- <td>
                     {{merchantList.address}}

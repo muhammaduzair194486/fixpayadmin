@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MerchantsComponent } from './merchants.component';
 import { AddMerchantComponent } from './add-merchant/add-merchant.component';
+import { MerchantDetailsComponent } from './merchant-details/merchant-details.component';
 import { AuthGuard } from '../_helpers/auth.guard';
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
       },
       
     ]
-  }
+  },
+  {path: 'merchant-details', canActivate: [AuthGuard], component : MerchantDetailsComponent }
 ];
 
 //------------------------------
@@ -46,3 +48,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class MerchantsRoutingModule {}
+
+

@@ -12,12 +12,12 @@ import { RegisterComponent } from './views/register/register.component';
 //--
 //import { DashboardComponent } from './views/dashboard/dashboard.component';
 
-import { HomeComponent } from './views/home/home.component';
+// import { HomeComponent } from './views/home/home.component';
 // import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './views/_helpers/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   {
     path: '',

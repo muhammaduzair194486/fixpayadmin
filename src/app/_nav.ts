@@ -29,7 +29,8 @@ export const navItems: INavData[] = [
         name: 'Add Merchants',
         url: '/merchants/add-merchants',
         icon: 'icon-star'
-      }
+      },
+
    
     ]
   },

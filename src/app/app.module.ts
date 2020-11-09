@@ -8,7 +8,7 @@ import { JwtInterceptor,  } from './views/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './views/_helpers/error.interceptor';
 import { appInitializer } from './views/_helpers/app.initializer';
 import { AuthenticationService } from './views/_services/authentication.service';
-import { HomeComponent } from './views/home/home.component';
+// import { HomeComponent } from './views/home/home.component';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { LoginComponent } from './views/login/login.component';
 
@@ -80,7 +80,7 @@ import { ChartsModule } from 'ng2-charts';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
+    // HomeComponent,
     // DashboardComponent
   ],
   providers: [{

@@ -9,6 +9,7 @@ import { Message, MessageService } from "primeng/api";
 import { FilterUtils } from 'primeng/utils';
 import { SelectItem } from 'primeng/api';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class MerchantsComponent implements OnInit {
   msgs: Message[];
 
 
-  constructor(private _merchantsService: MerchantsService, private messageService: MessageService,) { }
+  constructor(private _merchantsService: MerchantsService, private messageService: MessageService,
+    private _activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -42,10 +44,18 @@ export class MerchantsComponent implements OnInit {
 
     // });
 
-    this._merchantsService.getAllMerchants().pipe(first()).subscribe(merchantList => {
-      this.merchantList = merchantList;
-      console.log(this.merchantList);
-      this.loading = false;
+    this._merchantsService.getAllMerchants().pipe(first()).subscribe({
+      next: response => {
+
+        console.log(response);
+        this.merchantList = response;
+        console.log(this.merchantList);
+        this.loading = false;
+
+      },
+      error: error => {
+        console.log(error);
+      }
 
     });
 
@@ -65,7 +75,7 @@ export class MerchantsComponent implements OnInit {
   }
   //------------------------statusChange end-------------------
 
-  //------------------------merchantDetails stat--------------
+  //------------------------merchantDetails start--------------
   merchantDetails(merchantId: string): void {
     alert(merchantId);
     this._merchantsService.merchantDetails(merchantId).pipe(first()).subscribe({
