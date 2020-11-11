@@ -36,15 +36,25 @@ export const navItems: INavData[] = [
   },
   //----------------------------------------------------------------
 
-  {
-    title: true,
-    name: 'customer'
-  },
-  {
-    name: 'Customers',
-    url: '/customers/customers',
-    icon: 'icon-drop'
-  },
+  //----------------------------------------------------------------
+    {
+      title: true,
+      name: 'customers'
+    },
+    {
+      name: 'Customer',
+      url: '/customers',
+      icon: 'icon-star',
+      children: [
+        {
+          name: 'Customers',
+          url: '/customers',
+          icon: 'icon-star'
+        },
+     
+      ]
+    },
+    //----------------------------------------------------------------
 
 
   // {

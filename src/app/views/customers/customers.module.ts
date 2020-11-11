@@ -5,13 +5,15 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CustomersComponent } from '../customers/customers.component';
-import { CustomersService } from '../customers/customersservice';
+import { CustomersService } from '../../services/customersservice';
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';  
 import { appInitializer } from '../_helpers/app.initializer';
 import { JwtInterceptor,  } from '../_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '../_helpers/error.interceptor';
 
-
+import { TabViewModule } from 'primeng/tabview';
+import { MessageModule } from 'primeng/message';
+import { TabMenuModule } from 'primeng/tabmenu';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';
@@ -23,9 +25,11 @@ import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {InputTextModule} from 'primeng/inputtext';
-
+import {MessagesModule} from 'primeng/messages';
+import {InputSwitchModule} from 'primeng/inputswitch';
 //ThemeRouting
 import { CustomersRoutingModule } from './customers-routing.module';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
 @NgModule({
     imports: [
@@ -45,10 +49,15 @@ import { CustomersRoutingModule } from './customers-routing.module';
           InputTextModule,
           ProgressBarModule,
           HttpClientModule,
+          MessagesModule,
+          InputSwitchModule,
+          MessageModule,
+          TabMenuModule,
+          TabViewModule,
           FormsModule
     ],
-    declarations: [ CustomersComponent ],
-    bootstrap:    [ CustomersComponent ],
+    declarations: [ CustomersComponent, CustomerDetailsComponent ],
+    bootstrap:    [ CustomersComponent, CustomerDetailsComponent ],
     providers: [
       CustomersService,
       { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [CustomersService] },

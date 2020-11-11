@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-merchant',
   templateUrl: './merchants.component.html',
-  styleUrls: ['./merchants.component.css'],
+  styleUrls: ['./merchants.component.scss'],
   providers: [MessageService]
 })
 export class MerchantsComponent implements OnInit {
@@ -28,11 +28,12 @@ export class MerchantsComponent implements OnInit {
   @ViewChild('dt') table: Table;
 
   error = '';
+   _severity:string = '';
+  _summary:string = '';
+  _detail:string = '';
 
-  msgs: Message[];
 
-
-  constructor(private _merchantsService: MerchantsService, private messageService: MessageService,
+  constructor(private _merchantsService: MerchantsService, private _messageService: MessageService,
     private _activatedRoute: ActivatedRoute) { }
 
 
@@ -66,10 +67,10 @@ export class MerchantsComponent implements OnInit {
     this._merchantsService.statusChange(id, status).pipe(first()).subscribe({
       next: response => {
         console.log(response);
-        this.MessageFun(response.status, response.message);
+        this.MessageFun(response.status, response.message, response.result);
       },
       error: error => {
-        this.MessageFun("error", error);
+        this.MessageFun('Error', error, false);
       }
     });
   }
@@ -81,10 +82,10 @@ export class MerchantsComponent implements OnInit {
     this._merchantsService.merchantDetails(merchantId).pipe(first()).subscribe({
       next: response => {
         console.log(response);
-        this.MessageFun(response.status, response.message);
+        this.MessageFun(response.status, response.message, response.result);
       },
       error: error => {
-        this.MessageFun("error", error);
+        this.MessageFun('Error', error, false);
       }
     });
   }
@@ -97,16 +98,36 @@ export class MerchantsComponent implements OnInit {
 
 
   //-------------message -------method-------start---------------
-  MessageFun(status: string, message: string): void {
+  MessageFun(status: string, message: string, result:boolean): void {
 
-    this.msgs = [
-      {
-        severity: status.toLowerCase(),
-        summary: status,
-        detail: message
-      }
-    ]
+    if(result){
+
+      this._severity = 'success';
+      this._summary = 'Success';
+      this._detail = message;
+
+    }else if(status == "Error"){
+
+      this._severity = 'error';
+      this._summary = 'Error';
+      this._detail = message;
+
+    }else{
+
+      this._severity = 'error';
+      this._summary = 'Failed';
+      this._detail = message;
+
+    }
+
+    this._messageService.add({
+      severity: this._severity,
+      summary: this._summary,
+      detail: this._detail
+    });
 
   }
   //-------------message -------method-------end--------------- 
+
+
 }

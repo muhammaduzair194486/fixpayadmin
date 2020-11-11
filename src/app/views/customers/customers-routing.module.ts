@@ -3,30 +3,60 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { CustomersComponent } from './customers.component';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component'
 import { AuthGuard } from '../_helpers/auth.guard'
 
+// const routes: Routes = [
+//   {
+//     path : '',
+//     canActivate: [AuthGuard],
+//     data : {
+//       title : 'Customers',
+//     },
+//     children:[
+//       {
+//         path: '',
+//         redirectTo: 'customers',
+//       },
+//       {
+//         path: 'customers',
+//         component:CustomersComponent,
+//         data:{
+//           title:'Customers'
+//         }
+//       }
+//     ]
+//   }
+// ];
+
+//-----------------------------------------
 const routes: Routes = [
   {
-    path : '',
-    canActivate: [AuthGuard],
-    data : {
-      title : 'Customers',
+    path: '',
+    data: {
+      title: 'Customer'
     },
-    children:[
+    children: [
       {
         path: '',
-        redirectTo: 'customers',
+        redirectTo: 'customers'
       },
       {
         path: 'customers',
-        component:CustomersComponent,
-        data:{
-          title:'Customers'
+        canActivate: [AuthGuard],
+        component: CustomersComponent,
+        data: {
+          title: 'Customers'
         }
-      }
+      },
+     
+      
     ]
-  }
+  },
+  {path: 'customer-details', canActivate: [AuthGuard], component : CustomerDetailsComponent }
 ];
+
+//------------------------------
 
 
 

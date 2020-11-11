@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Message, MessageService } from 'primeng/api';
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 // import { saveAs as importedSaveAs } from "file-saver";  
 import { FileService } from '../../../FileService/file.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
@@ -34,12 +34,16 @@ export class AddMerchantComponent implements OnInit {
   phoneNumberVal: string;
   submitted = false;
 
+  _severity: string = '';
+  _summary: string = '';
+  _detail: string = '';
+
   constructor(
     private _messageService: MessageService,
     private _http: HttpClient,
     private _fileService: FileService,
     private _formBuilder: FormBuilder,
-    private _merchantsService:MerchantsService
+    private _merchantsService: MerchantsService
   ) { }
 
   ngOnInit(): void {
@@ -62,15 +66,18 @@ export class AddMerchantComponent implements OnInit {
     if (this.saveMerchantDataForm.invalid) {
       return;
     }
-    
-    const merchant = this.saveMerchantDataForm.value;  
+
+    const merchant = this.saveMerchantDataForm.value;
     console.log(merchant);
     this.CreateMerchants(merchant);
 
   }
 
   resetForm() {
-    this.saveMerchantDataForm.reset();
+
+    this.saveMerchantDataForm.reset(); 
+    this.uploadedFiles = [];
+
   }
 
 
@@ -83,8 +90,8 @@ export class AddMerchantComponent implements OnInit {
   }
 
 
-  CreateMerchants(merchant:Merchants){
-    
+  CreateMerchants(merchant: Merchants) {
+
     console.log(this.uploadedFiles);
 
     if (this.uploadedFiles.length === 0) {
@@ -96,36 +103,55 @@ export class AddMerchantComponent implements OnInit {
     formData.append('file', fileToUpload, fileToUpload.name);
     this.merchant = this.saveMerchantDataForm.value;
     formData.append('merchant', JSON.stringify(this.merchant));
-   
+
     console.log(this.merchant);
 
     this._merchantsService.SaveMerchant(formData).pipe(first()).subscribe({
       next: response => {
         console.log(response);
-        this.MessageFun(response.status, response.message);
+        this.MessageFun(response.status, response.message, response.result);
+        // this.resetForm();
       },
       error: error => {
-        this.MessageFun("error", error);
+        this.MessageFun('Error', error, false);
       }
     });
 
-    
+
   }
 
 
-    //-------------message -------method-------start---------------
-    MessageFun(status: string, message: string): void {
+  //-------------message -------method-------start---------------
+  MessageFun(status: string, message: string, result: boolean): void {
 
-      this.msgs = [
-        {
-          severity: status.toLowerCase(),
-          summary: status,
-          detail: message
-        }
-      ]
-  
+    if (result) {
+
+      this._severity = 'success';
+      this._summary = 'Success';
+      this._detail = message;
+
+    } else if (status == "Error") {
+
+      this._severity = 'error';
+      this._summary = 'Error';
+      this._detail = message;
+
+    } else {
+
+      this._severity = 'error';
+      this._summary = 'Failed';
+      this._detail = message;
+
     }
-    //-------------message -------method-------end--------------- 
+
+    this._messageService.add({
+      severity: this._severity,
+      summary: this._summary,
+      detail: this._detail
+    });
+
+  }
+  //-------------message -------method-------end--------------- 
 
 
 }

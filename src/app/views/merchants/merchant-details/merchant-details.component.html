@@ -1,0 +1,131 @@
+<div class="card merchant-details">
+    <h5>Merchant Details</h5>
+    <section class="merchant-details">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <img src="assets/img/FixPayImages/Merchant/ProfileImages/burgerlogo.png" [alt]="merchantList.brandName" width="100" height="80"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="brandName" class="lbl-heading" >Brand Name:</label>
+                                <label for="brandName" class="lbl-details" >{{merchantList.brandName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="email" class="lbl-heading" >Email:</label>
+                                <label for="email" class="lbl-details" >{{merchantList.email}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="userName" class="lbl-heading" >Username</label>
+                                <label for="userName" class="lbl-details" >{{merchantList.userName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="phoneNumber" class="lbl-heading" >Phone Number:</label>
+                                <label for="phoneNumber" class="lbl-details" >{{merchantList.phoneNumber}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="address" class="lbl-heading" >Address:</label>
+                                <label for="address" class="lbl-details" >{{merchantList.address}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-fluid">
+                            <div class="p-field">
+                                <label for="date" class="lbl-heading" >Joinning Date:</label>
+                                <label for="date" class="lbl-details" >{{merchantList.createDate | date: 'dd-MMM-yyyy'}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+</div>
+
+
+<div class="card">
+    <h5>Cashback List</h5>
+    <p-table #dt1 [value]="cashbackDTModel" selectionMode="single" [(selection)]="cashbackDTModel" dataKey="cashbackId" styleClass="p-datatable-cashbackDTModel"
+        [rows]="10" [paginator]="true" stateStorage="local" stateKey="statedemo-local">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="createDate">Create Date <p-sortIcon field="createDate"></p-sortIcon></th>
+                <th pSortableColumn="cashbackTypeTitle">Type <p-sortIcon field="cashbackTypeTitle"></p-sortIcon></th>
+                <th pSortableColumn="cashbackCategoryTitle">Category <p-sortIcon field="cashbackCategoryTitle"></p-sortIcon></th>
+                <!-- <th pSortableColumn="isCollect">Used <p-sortIcon field="representative.name"></p-sortIcon></th> -->
+                <th pSortableColumn="rewardPoints">Reward Points<p-sortIcon field="status"></p-sortIcon></th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'createDate', 'contains')" [value]="dt1.filters['createDate']?.value" placeholder="Search..." class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'cashbackTypeTitle', 'contains')" [value]="dt1.filters['cashbackTypeTitle']?.value" placeholder="Search.." class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'cashbackCategoryTitle', 'contains')" [value]="dt1.filters['representative.name']?.value" placeholder="Search by Representative" class="p-column-filter">
+                </th>
+                <!-- <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'isCollect', 'contains')" [value]="dt1.filters['status']?.value" placeholder="Search by Status" class="p-column-filter">
+                </th> -->
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cashbackDTModel>
+            <tr [pSelectableRow]="customer">
+                <td>
+                    {{cashbackDTModel.createDate | date:'dd-MMM-yyyy'}}
+                </td>
+                <td>
+                    {{cashbackDTModel.cashbackTypeTitle}}
+                </td>
+                <td>
+                    {{cashbackDTModel.cashbackCategoryTitle}}
+                </td>
+                <!-- <td>
+                    {{cashbackDTModel.isCollect}}
+                </td> -->
+                <td>
+                    {{cashbackDTModel.rewardPoints}}
+                </td>
+                <td>
+                    <a [routerLink]="['/merchants/merchant-details']" [queryParams]="{MerchantId: merchantList.id}" pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"></a>
+                </td>
+               
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">No customers found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+

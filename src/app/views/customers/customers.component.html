@@ -1,7 +1,12 @@
+
+<!-- for message start -->
+<p-toast class="custom-toast"></p-toast>
+<!-- for message end -->
+
 <p-table #dt [value]="customerList" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customerList"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [filterDelay]="0" [globalFilterFields]="['fullName','email','username','phoneNumber']">
+        [filterDelay]="0" [globalFilterFields]="['fullName','phoneNumber']">
         <ng-template pTemplate="caption">
             <div class="table-header">
                 List of Customers
@@ -13,29 +18,25 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th>Name</th>
                 <th>Image</th>
-                <th>Email</th>
-                <th>UserName</th>
+                <th>Name</th>
                 <th>PhoneNumber</th>
+                <th>Joinning Date</th>
+                <th>Status</th>
+                <th>Actions</th>
                 <!-- <th>Address</th> -->
             </tr>
             <tr>
+                <th></th>
                 <th>
                     <input pInputText type="text" (input)="dt.filter($event.target.value, 'fullName', 'startsWith')" placeholder="Search" class="p-column-filter">
                 </th>
                 <th>
-                    <input pInputText type="text" (input)="dt.filter($event.target.value, 'image', 'contains')" placeholder="Search" class="p-column-filter">
-                </th>
-                <th>
-                    <input pInputText type="text" (input)="dt.filter($event.target.value, 'email', 'contains')" placeholder="Search" class="p-column-filter">
-                </th>
-                <th>
-                    <input pInputText type="text" (input)="dt.filter($event.target.value, 'username', 'contains')" placeholder="Search" class="p-column-filter">
-                </th>
-                <th>
                     <input pInputText type="text" (input)="dt.filter($event.target.value, 'phoneNumber', 'contains')" placeholder="Search" class="p-column-filter">
                 </th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <!-- <th>
                     <input pInputText type="text" (input)="dt.filter($event.target.value, 'address', 'contains')" placeholder="Search" class="p-column-filter">
                 </th> -->
@@ -47,19 +48,23 @@
         <ng-template pTemplate="body" let-customerList>
             <tr>
                 <td>
-                    {{customerList.fullName}}
-                </td>
-                <td>
                     <img [src]="customerList.image" [alt]="customerList.fullName" width="120" height="100"/>
                 </td>
                 <td>
-                    {{customerList.email}}
-                </td>
-                <td>
-                    {{customerList.username}}
+                    {{customerList.fullName}}
                 </td>
                 <td>
                     {{customerList.phoneNumber}}
+                </td>
+                <td>
+                    {{customerList.createDate | date: 'dd-MMM-yyy'}}
+                </td>
+                <td>
+                    <p-inputSwitch (onChange)="statusChange(customerList.id,customerList.active)" [(ngModel)]="customerList.active"></p-inputSwitch>
+                </td>
+                <td>
+                    <!-- //customers/customer-details -->
+                    <a [routerLink]="['/customers/customer-details']" [queryParams]="{CustomerId: customerList.id}" pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"></a>
                 </td>
                 <!-- <td>
                     {{merchantList.address}}

@@ -1,0 +1,22 @@
+
+.layout-content .content-section.implementation > h3 {
+    font-weight: 600;
+}
+
+textarea {
+    resize: none;
+}
+
+div.card {
+    padding: 3% 3% 3% 3%;
+}
+
+div.customer-details div.p-fluid div.p-field label.lbl-heading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div.customer-details div.p-fluid div.p-field label.lbl-details {
+    font-size: 14px;
+}
+

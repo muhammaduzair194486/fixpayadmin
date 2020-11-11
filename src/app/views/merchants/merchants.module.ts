@@ -12,9 +12,6 @@ import { AddMerchantComponent } from './add-merchant/add-merchant.component';
 import { MerchantDetailsComponent } from './merchant-details/merchant-details.component';
 import { MerchantsService } from '../../services/merchants.service';
 
-
-
-
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';

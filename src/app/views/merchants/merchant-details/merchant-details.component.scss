@@ -1,0 +1,29 @@
+@media screen and (max-width: 489px) {
+    .p-formgroup-inline {
+        .p-field {
+            margin-bottom: 1em !important;
+        }
+    }
+}
+
+.layout-content .content-section.implementation > h3 {
+    font-weight: 600;
+}
+
+textarea {
+    resize: none;
+}
+
+div.card {
+    padding: 3% 3% 3% 3%;
+}
+
+div.merchant-details div.p-fluid div.p-field label.lbl-heading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div.mercahnt-details div.p-fluid div.p-field label.lbl-details {
+    font-size: 14px;
+}
+

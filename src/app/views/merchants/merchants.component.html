@@ -1,4 +1,6 @@
-<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+<!-- for message start -->
+<p-toast class="custom-toast"></p-toast>
+<!-- for message end -->
 
 <p-table #dt [value]="merchantList" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-merchantList"
@@ -51,8 +53,8 @@
         <ng-template pTemplate="body" let-merchantList>
             <tr>
                 <td>
-                    <!-- <img [src]="merchantList.image" [alt]="merchantList.brandName" width="120" height="100"/> -->
-                    <img src="assets/img/FixPayImages/Merchant/ProfileImages/burgerlogo.png" [alt]="merchantList.brandName" width="80" height="60"/>
+                    <img [src]="merchantList.image" [alt]="merchantList.brandName" width="120" height="100"/>
+                    <!-- <img src="assets/img/FixPayImages/Merchant/ProfileImages/burgerlogo.png" [alt]="merchantList.brandName" width="80" height="60"/> -->
                 </td>
                 <td>
                     {{merchantList.brandName}}

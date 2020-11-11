@@ -1,0 +1,399 @@
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+
+<div class="card customer-details">
+  <h5>Customer Details</h5>
+  <section class="customer-details">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="p-fluid">
+          <div class="p-field">
+            <img [src]="customerDetailsFA.image" [alt]="customerDetailsFA.fullName" width="100" height="80" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="brandName" class="lbl-heading">Name:</label>
+                <label for="brandName" class="lbl-details">{{customerDetailsFA.fullName}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="email" class="lbl-heading">Email:</label>
+                <label for="email" class="lbl-details">{{customerDetailsFA.email}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="userName" class="lbl-heading">Username:</label>
+                <label for="userName" class="lbl-details">{{customerDetailsFA.username}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="phoneNumber" class="lbl-heading">Phone Number:</label>
+                <label for="phoneNumber" class="lbl-details">{{customerDetailsFA.phoneNumber}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="date" class="lbl-heading">Joinning Date:</label>
+                <label for="date" class="lbl-details">{{customerDetailsFA.createDate | date: 'dd-MMM-yyyy'}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="date" class="lbl-heading">Wallet:</label>
+                <label for="date" class="lbl-details">{{customerDetailsFA.totalBalance}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="card customer-details-tabmenu">
+  <h5>Customer Details</h5>
+  <section class="customer-details-tabmenu">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Custome Header-----start -->
+        <p-tabView styleClass="tabview-custom">
+          <p-tabPanel>
+            <ng-template pTemplate="header">
+              <i class="pi pi-briefcase"></i>
+              <span> Cashback</span>
+            </ng-template>
+            <!-- Cashback Content Start---------- -->
+            <p-table #dt1 [value]="lstCashbackListFA" [(selection)]="lstCashbackListFA" dataKey="id"
+              styleClass="p-datatable-lstCashbackListFA" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+              [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+              [globalFilterFields]="['createDate','cashbackTypeTitle','cashbackCategoryTitle','rewardPoints']">
+              <ng-template pTemplate="caption">
+                <div class="table-header">
+                  List of Cashback
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                      placeholder="Search..." />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <!-- <th style="width: 3rem"></th> -->
+                  <th pSortableColumn="createDate">Date <p-sortIcon field="createDate"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="cashbackTypeTitle">Type <p-sortIcon field="cashbackTypeTitle"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="cashbackCategoryTitle">Category <p-sortIcon field="cashbackCategoryTitle">
+                    </p-sortIcon>
+                  </th>
+                  <th pSortableColumn="rewardPoints">Reward Points <p-sortIcon field="rewardPoints"></p-sortIcon>
+                  </th>
+                  <!-- <th pSortableColumn="isCollect">Used <p-sortIcon field="date"></p-sortIcon>
+                     </th> -->
+                  <!-- <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon>
+                              </th>
+                              <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon>
+                              </th>
+                              <th style="width: 8rem"></th> -->
+                </tr>
+
+              </ng-template>
+              <ng-template pTemplate="body" let-lstCashbackListFA>
+                <tr class="p-selectable-row">
+                  <!-- <td>
+                                <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
+                              </td> -->
+                  <td>
+                    {{lstCashbackListFA.createDate | date:'dd-MMM-yyyy'}}
+                  </td>
+                  <td>
+                    {{lstCashbackListFA.cashbackTypeTitle}}
+                  </td>
+                  <td>
+                    {{lstCashbackListFA.cashbackCategoryTitle}}
+                  </td>
+                  <td>
+                    {{lstCashbackListFA.rewardPoints}}
+                  </td>
+                  <!-- <td>
+                       {{lstCashbackListFA.isCollect}}
+                     </td> -->
+                  <!-- <td>
+                                <span class="p-column-title">Activity</span>
+                                <p-progressBar [value]="lstCashbackListFA.activity" [showValue]="false"></p-progressBar>
+                              </td> -->
+                  <!-- <td style="text-align: center">
+                                <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                              </td> -->
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="8">No customers found.</td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <!-- Cashback Content End---------- -->
+          </p-tabPanel>
+          <p-tabPanel header="Header II">
+            <ng-template pTemplate="header">
+              <i class="pi pi-share-alt"></i>
+              <span> Transactions</span>
+            </ng-template>
+
+            <!-- Transactions Content Start---------- -->
+            <p-table #dt2 [value]="lstTransactionListFA" [(selection)]="lstTransactionListFA" dataKey="id"
+              styleClass="p-datatable-lstTransactionListFA" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+              [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+              [globalFilterFields]="['createDate','brandName','paymentModeTitle','transactionModeTile','transactionTypeTitle','amount']">
+              <ng-template pTemplate="caption">
+                <div class="table-header">
+                  List of Cashback
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                      placeholder="Search..." />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <!-- <th style="width: 3rem"></th> -->
+                  <th pSortableColumn="createDate">Date <p-sortIcon field="createDate"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="brandName">Merchants <p-sortIcon field="brandName"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="paymentModeTitle">Payment Mode <p-sortIcon field="paymentModeTitle"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="transactionModeTile">Transaction Mode <p-sortIcon field="transactionModeTile">
+                    </p-sortIcon>
+                  </th>
+                  <th pSortableColumn="transactionTypeTitle">Credit <p-sortIcon field="transactionTypeTitle">
+                    </p-sortIcon>
+                  </th>
+                  <th pSortableColumn="transactionTypeTitle">Debit <p-sortIcon field="transactionTypeTitle">
+                    </p-sortIcon>
+                  </th>
+                  <!-- <th pSortableColumn="amount">Amount <p-sortIcon field="amount"></p-sortIcon>
+                  </th> -->
+                  <!-- <th pSortableColumn="isCollect">Used <p-sortIcon field="date"></p-sortIcon>
+                  </th> -->
+                  <!-- <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon>
+                           </th>
+                           <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon>
+                           </th>
+                           <th style="width: 8rem"></th> -->
+                </tr>
+
+              </ng-template>
+              <ng-template pTemplate="body" let-lstTransactionListFA>
+
+                <tr class="p-selectable-row" *ngIf="lstTransactionListFA.transactionTypeNumber == '1'">
+                  <!-- If Credit -->
+                  <!-- <td>
+                             <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
+                           </td> -->
+                  <td>
+                    {{lstTransactionListFA.createDate | date:'dd-MMM-yyyy'}}
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.brandName}}
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.paymentModeTitle}}
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.transactionModeTile}}
+                  </td>
+                  <!-- <td>
+                    {{lstTransactionListFA.transactionTypeTitle}}
+                  </td> -->
+                  <td>
+                    {{lstTransactionListFA.amount}}
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <!-- <td>
+                    {{lstCashbackListFA.isCollect}}
+                  </td> -->
+                  <!-- <td>
+                             <span class="p-column-title">Activity</span>
+                             <p-progressBar [value]="lstCashbackListFA.activity" [showValue]="false"></p-progressBar>
+                           </td> -->
+                  <!-- <td style="text-align: center">
+                             <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                           </td> -->
+                </tr>
+                <tr class="p-selectable-row" *ngIf="lstTransactionListFA.transactionTypeNumber == 2">
+                  <!-- If Debit -->
+                  <!-- <td>
+                               <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
+                             </td> -->
+                  <td>
+                    {{lstTransactionListFA.createDate | date:'dd-MMM-yyyy'}}
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.brandName}}
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.paymentModeTitle}}
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.transactionModeTile}}
+                  </td>
+                  <!-- <td>
+                      {{lstTransactionListFA.transactionTypeTitle}}
+                    </td> -->
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    {{lstTransactionListFA.amount}}
+                  </td>
+                  <!-- <td>
+                      {{lstCashbackListFA.isCollect}}
+                    </td> -->
+                  <!-- <td>
+                               <span class="p-column-title">Activity</span>
+                               <p-progressBar [value]="lstCashbackListFA.activity" [showValue]="false"></p-progressBar>
+                             </td> -->
+                  <!-- <td style="text-align: center">
+                               <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                             </td> -->
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="8">No customers found.</td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <!-- Transactions Content End---------- -->
+
+          </p-tabPanel>
+          <p-tabPanel header="Header III">
+            <ng-template pTemplate="header">
+              <i class="pi pi-user-plus"></i>
+              <span> Friends</span>
+            </ng-template>
+
+            <!-- Friends Content Start---------- -->
+            <p-table #dt3 [value]="lstFriendListModelFA" [(selection)]="lstFriendListModelFA" dataKey="id"
+              styleClass="p-datatable-lstFriendListModelFA" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+              [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+              [globalFilterFields]="['createDate','email','friendRequestFlagTitle','fullName','email','userName','phoneNumber']">
+              <ng-template pTemplate="caption">
+                <div class="table-header">
+                  List of Cashback
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt3.filterGlobal($event.target.value, 'contains')"
+                      placeholder="Search..." />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <!-- <th style="width: 3rem"></th> -->
+                  <th pSortableColumn="fullName">Friend<p-sortIcon field="fullName"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="fullName">Flag<p-sortIcon field="fullName"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="userName">Username <p-sortIcon field="userName">
+                    </p-sortIcon>
+                  </th>
+                  <th pSortableColumn="phoneNumber">Phone Number <p-sortIcon field="phoneNumber"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="createDate">Date <p-sortIcon field="createDate"></p-sortIcon>
+                  </th>
+                  <!-- <th pSortableColumn="isCollect">Used <p-sortIcon field="date"></p-sortIcon>
+                     </th> -->
+                  <!-- <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon>
+                              </th>
+                              <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon>
+                              </th>
+                              <th style="width: 8rem"></th> -->
+                </tr>
+
+              </ng-template>
+              <ng-template pTemplate="body" let-lstFriendListModelFA>
+                <tr class="p-selectable-row">
+                  <!-- <td>
+                                <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
+                              </td> -->
+                  <td>
+                    <img [alt]="lstFriendListModelFA.fullName"
+                      [src]="lstFriendListModelFA.image" width="32"
+                      style="vertical-align: middle" />
+                    <span class="image-text">{{lstFriendListModelFA.fullName}}</span>
+                  </td>
+                  <td>
+                      {{lstFriendListModelFA.friendRequestFlagTitle}}
+                  </td>
+                  <td>
+                    {{lstFriendListModelFA.email}}
+                  </td>
+                  <td>
+                    {{lstFriendListModelFA.userName}}
+                  </td>
+                  <td>
+                    {{lstFriendListModelFA.phoneNumber}}
+                  </td>
+                  <td>
+                    {{lstFriendListModelFA.createDate | date:'dd-MMM-yyyy'}}
+                  </td>
+                  <!-- <td>
+                       {{lstCashbackListFA.isCollect}}
+                     </td> -->
+                  <!-- <td>
+                                <span class="p-column-title">Activity</span>
+                                <p-progressBar [value]="lstCashbackListFA.activity" [showValue]="false"></p-progressBar>
+                              </td> -->
+                  <!-- <td style="text-align: center">
+                                <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                              </td> -->
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="8">No customers found.</td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <!-- Friends Content End---------- -->
+
+          </p-tabPanel>
+        </p-tabView>
+        <!-- Custome Header-----end -->
+      </div>
+    </div>
+
+
+
+  </section>
+</div>
