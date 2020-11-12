@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 import {MenuItem} from 'primeng/api';
 import { Table } from 'primeng/table';
 
-import { CustomersService } from '../../../services/customersservice';
+import { CustomersService } from '../../../services/customers.service';
 import { CashbackListFA, CustomerDetailsFA, FriendListModelFA, TransactionListFA } from '../../../_models/customer';
 
 @Component({
@@ -28,7 +28,6 @@ export class CustomerDetailsComponent implements OnInit {
   @ViewChild('dt1') table1: Table;
   @ViewChild('dt2') table2: Table;
   @ViewChild('dt3') table3: Table;
-
 
 
   constructor(

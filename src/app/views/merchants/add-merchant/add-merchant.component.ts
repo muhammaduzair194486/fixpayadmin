@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Message, MessageService } from 'primeng/api';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 // import { saveAs as importedSaveAs } from "file-saver";  
-import { FileService } from '../../../FileService/file.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
@@ -41,7 +40,6 @@ export class AddMerchantComponent implements OnInit {
   constructor(
     private _messageService: MessageService,
     private _http: HttpClient,
-    private _fileService: FileService,
     private _formBuilder: FormBuilder,
     private _merchantsService: MerchantsService
   ) { }
@@ -87,6 +85,7 @@ export class AddMerchantComponent implements OnInit {
     console.log(event.files);
     console.log(this.uploadedFiles);
 
+    this.MessageFun('info','File Uploaded', true);
   }
 
 
@@ -136,10 +135,16 @@ export class AddMerchantComponent implements OnInit {
       this._summary = 'Error';
       this._detail = message;
 
-    } else {
+    } else if(status = 'Failed'){
 
       this._severity = 'error';
       this._summary = 'Failed';
+      this._detail = message;
+
+    }else{
+      
+      this._severity = status;
+      this._summary = 'Info';
       this._detail = message;
 
     }

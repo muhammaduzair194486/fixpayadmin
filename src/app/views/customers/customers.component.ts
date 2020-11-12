@@ -1,14 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-
-import { CustomersService } from '../../services/customersservice';
+import { CustomersService } from '../../services/customers.service';
 import { CustomerList } from '../../_models/customer';
-
 import { Table } from 'primeng/table';
-import { PrimeNGConfig } from 'primeng/api';
 import { Message, MessageService } from 'primeng/api';
-import { FilterUtils } from 'primeng/utils';
-import { SelectItem } from 'primeng/api';
-import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 @Component({

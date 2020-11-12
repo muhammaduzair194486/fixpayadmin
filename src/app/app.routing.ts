@@ -62,6 +62,14 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'transactions',
+        loadChildren: () => import('./views/transactions/transaction.module').then(m => m.TransactionsModule)
+      },
+      {
+        path: 'cashbacks',
+        loadChildren: () => import('./views/cashback/cashback.module').then(m => m.CashbackModule)
+      },
+      {
         path: 'customers',
         loadChildren: () => import('./views/customers/customers.module').then(m => m.CustomersModule)
       },

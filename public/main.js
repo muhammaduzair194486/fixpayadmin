@@ -451,6 +451,42 @@ var navItems = [
         ]
     },
     //----------------------------------------------------------------
+    //----------------------------------------------------------------
+    {
+        title: true,
+        name: 'cashbacks'
+    },
+    {
+        name: 'Cashback',
+        url: '/cashbacks',
+        icon: 'icon-star',
+        children: [
+            {
+                name: 'Cashbacks',
+                url: '/cashbacks',
+                icon: 'icon-star'
+            },
+        ]
+    },
+    //----------------------------------------------------------------
+    //----------------------------------------------------------------
+    {
+        title: true,
+        name: 'transactions'
+    },
+    {
+        name: 'Transactions',
+        url: '/transactions',
+        icon: 'icon-star',
+        children: [
+            {
+                name: 'Transactions',
+                url: '/transactions',
+                icon: 'icon-star'
+            },
+        ]
+    },
+    //----------------------------------------------------------------
     // {
     //   title: true,
     //   name: 'Theme'
@@ -782,6 +818,8 @@ var APP_CONTAINERS = [
 
 
 
+//import { TransactionsComponent } from './views/transactions/transactions.component';
+//import { CashbackComponent } from './views/cashback/cashback.component';
 // import { MerchantComponent } from './views/merchant/merchant.component';
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -910,12 +948,20 @@ var routes = [
         },
         children: [
             {
+                path: 'transactions',
+                loadChildren: function () { return Promise.all(/*! import() | views-transactions-transaction-module */[__webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-merchants-merchants-mo~53c90139"), __webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-transactions-transaction-module"), __webpack_require__.e("views-transactions-transaction-module")]).then(__webpack_require__.bind(null, /*! ./views/transactions/transaction.module */ "./src/app/views/transactions/transaction.module.ts")).then(function (m) { return m.TransactionsModule; }); }
+            },
+            {
+                path: 'cashbacks',
+                loadChildren: function () { return Promise.all(/*! import() | views-cashback-cashback-module */[__webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-merchants-merchants-mo~53c90139"), __webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-transactions-transaction-module"), __webpack_require__.e("views-cashback-cashback-module")]).then(__webpack_require__.bind(null, /*! ./views/cashback/cashback.module */ "./src/app/views/cashback/cashback.module.ts")).then(function (m) { return m.CashbackModule; }); }
+            },
+            {
                 path: 'customers',
-                loadChildren: function () { return Promise.all(/*! import() | views-customers-customers-module */[__webpack_require__.e("default~views-customers-customers-module~views-merchants-merchants-module"), __webpack_require__.e("views-customers-customers-module")]).then(__webpack_require__.bind(null, /*! ./views/customers/customers.module */ "./src/app/views/customers/customers.module.ts")).then(function (m) { return m.CustomersModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-customers-customers-module */[__webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-merchants-merchants-mo~53c90139"), __webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-transactions-transaction-module"), __webpack_require__.e("default~views-customers-customers-module~views-merchants-merchants-module"), __webpack_require__.e("views-customers-customers-module")]).then(__webpack_require__.bind(null, /*! ./views/customers/customers.module */ "./src/app/views/customers/customers.module.ts")).then(function (m) { return m.CustomersModule; }); }
             },
             {
                 path: 'merchants',
-                loadChildren: function () { return Promise.all(/*! import() | views-merchants-merchants-module */[__webpack_require__.e("default~views-customers-customers-module~views-merchants-merchants-module"), __webpack_require__.e("views-merchants-merchants-module")]).then(__webpack_require__.bind(null, /*! ./views/merchants/merchants.module */ "./src/app/views/merchants/merchants.module.ts")).then(function (m) { return m.MerchantsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-merchants-merchants-module */[__webpack_require__.e("default~views-cashback-cashback-module~views-customers-customers-module~views-merchants-merchants-mo~53c90139"), __webpack_require__.e("default~views-customers-customers-module~views-merchants-merchants-module"), __webpack_require__.e("views-merchants-merchants-module")]).then(__webpack_require__.bind(null, /*! ./views/merchants/merchants.module */ "./src/app/views/merchants/merchants.module.ts")).then(function (m) { return m.MerchantsModule; }); }
             },
             {
                 path: 'base',

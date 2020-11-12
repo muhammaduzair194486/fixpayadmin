@@ -4,11 +4,8 @@ import { MerchantList } from '../../_models/merchants';
 // import { Representative } from './merchants';
 import { MerchantsService } from '../../services/merchants.service';
 import { Table } from 'primeng/table';
-import { PrimeNGConfig } from 'primeng/api';
-import { Message, MessageService } from "primeng/api";
-import { FilterUtils } from 'primeng/utils';
-import { SelectItem } from 'primeng/api';
-import { Observable } from 'rxjs';
+import { MessageService } from "primeng/api";
+
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -33,7 +30,8 @@ export class MerchantsComponent implements OnInit {
   _detail:string = '';
 
 
-  constructor(private _merchantsService: MerchantsService, private _messageService: MessageService,
+  constructor(private _merchantsService: MerchantsService, 
+    private _messageService: MessageService,
     private _activatedRoute: ActivatedRoute) { }
 
 

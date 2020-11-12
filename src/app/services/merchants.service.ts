@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { MerchantList } from '../_models/merchants';
-import { Observable } from 'rxjs';
 import { Merchants } from '../_models/merchants';
 
 @Injectable()
@@ -32,9 +31,7 @@ export class MerchantsService {
 
     //SaveMerchant
     SaveMerchant(formData: FormData) {
-
         return this._http.post<any>(`${environment.apiUrl}/api/Merchant/saveMerchant`, formData);
-
     }
 
 

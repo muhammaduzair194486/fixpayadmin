@@ -31,30 +31,71 @@ export const navItems: INavData[] = [
         icon: 'icon-star'
       },
 
-   
+
     ]
   },
   //----------------------------------------------------------------
 
   //----------------------------------------------------------------
-    {
-      title: true,
-      name: 'customers'
-    },
-    {
-      name: 'Customer',
-      url: '/customers',
-      icon: 'icon-star',
-      children: [
-        {
-          name: 'Customers',
-          url: '/customers',
-          icon: 'icon-star'
-        },
-     
-      ]
-    },
-    //----------------------------------------------------------------
+  {
+    title: true,
+    name: 'customers'
+  },
+  {
+    name: 'Customer',
+    url: '/customers',
+    icon: 'icon-star',
+    children: [
+      {
+        name: 'Customers',
+        url: '/customers',
+        icon: 'icon-star'
+      },
+
+    ]
+  },
+  //----------------------------------------------------------------
+
+  //----------------------------------------------------------------
+  {
+    title: true,
+    name: 'cashbacks'
+  },
+  {
+    name: 'Cashback',
+    url: '/cashbacks',
+    icon: 'icon-star',
+    children: [
+      {
+        name: 'Cashbacks',
+        url: '/cashbacks',
+        icon: 'icon-star'
+      },
+
+    ]
+  },
+  //----------------------------------------------------------------
+
+
+  //----------------------------------------------------------------
+  {
+    title: true,
+    name: 'transactions'
+  },
+  {
+    name: 'Transactions',
+    url: '/transactions',
+    icon: 'icon-star',
+    children: [
+      {
+        name: 'Transactions',
+        url: '/transactions',
+        icon: 'icon-star'
+      },
+
+    ]
+  },
+  //----------------------------------------------------------------
 
 
   // {

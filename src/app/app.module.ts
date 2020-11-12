@@ -52,7 +52,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-
+//import { TransactionsComponent } from './views/transactions/transactions.component';
+//import { CashbackComponent } from './views/cashback/cashback.component';
 // import { MerchantComponent } from './views/merchant/merchant.component';
 
 @NgModule({
@@ -80,6 +81,7 @@ import { ChartsModule } from 'ng2-charts';
     P500Component,
     LoginComponent,
     RegisterComponent,
+    // TransactionsComponent,
     // HomeComponent,
     // DashboardComponent
   ],
