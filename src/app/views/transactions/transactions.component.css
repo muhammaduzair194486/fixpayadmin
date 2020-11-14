@@ -1,0 +1,16 @@
+
+
+div.card {
+    padding: 3% 3% 3% 3%;
+}
+
+div.transactions-list div.p-fluid div.p-field label.lbl-heading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div.transactions-list div.p-fluid div.p-field label.lbl-details {
+    font-size: 14px;
+}
+
+

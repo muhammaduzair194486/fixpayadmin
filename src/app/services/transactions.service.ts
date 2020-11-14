@@ -9,14 +9,13 @@ import { CashbackListAFA } from '../_models/cashback';
 })
 export class TransactionsService {
 
-
   constructor(
     private _http:HttpClient
   ) { }
 
 
   getAllTransactionsFA(){
-    return this._http.get<any[]>(`${environment.apiUrl}/api/CashbackTransactions/getAllTransactionsFA`);
+    return this._http.get<any>(`${environment.apiUrl}/api/CashbackTransactions/getAllTransactionsFA`);
   }
 
 

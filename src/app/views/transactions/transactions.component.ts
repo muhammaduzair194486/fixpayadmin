@@ -4,6 +4,7 @@ import { MessageService } from "primeng/api";
 import { Table } from 'primeng/table';
 import { ActivatedRoute } from '@angular/router';
 import { TransactionsService } from '../../services/transactions.service';
+import { TransactionListAFA,TransactionListWTWAFA } from '../../_models/transaction';
 
 
 @Component({
@@ -15,6 +16,10 @@ import { TransactionsService } from '../../services/transactions.service';
 export class TransactionsComponent implements OnInit {
 
   @ViewChild('dt1') table: Table;
+
+  lstTransactionListAFA:TransactionListAFA[];
+  lstTransactionListWTBAFA:TransactionListAFA[];
+  lstTransactionListWTWAFA:TransactionListWTWAFA[];
 
   error = '';
   _severity: string = '';
@@ -30,7 +35,7 @@ export class TransactionsComponent implements OnInit {
   ngOnInit(): void {
     
     this.getAllTransactionsFA();
-    
+
   }
 
 
@@ -39,7 +44,11 @@ export class TransactionsComponent implements OnInit {
 
     this._transactionsService.getAllTransactionsFA().pipe(first()).subscribe({
       next: response => {
-        
+        console.log(response)
+        this.lstTransactionListAFA = response.lstTransactionListAFA;
+        this.lstTransactionListWTBAFA = response.lstTransactionListWTBAFA;
+        this.lstTransactionListWTWAFA = response.lstTransactionListWTWAFA;
+
       },
       error: error => {
         this.MessageFun('Error', error, false);

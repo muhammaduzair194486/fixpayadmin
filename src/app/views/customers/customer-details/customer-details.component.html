@@ -209,11 +209,11 @@
               </ng-template>
               <ng-template pTemplate="body" let-lstTransactionListFA>
 
-                <tr class="p-selectable-row" *ngIf="lstTransactionListFA.transactionTypeNumber == '1'">
+                <tr class="p-selectable-row" *ngIf="lstTransactionListFA.transactionTypeNumber == 1">
                   <!-- If Credit -->
                   <!-- <td>
-                             <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
-                           </td> -->
+                          <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
+                       </td> -->
                   <td>
                     {{lstTransactionListFA.createDate | date:'dd-MMM-yyyy'}}
                   </td>
@@ -347,13 +347,12 @@
                                 <p-tableCheckbox [value]="lstCashbackListFA"></p-tableCheckbox>
                               </td> -->
                   <td>
-                    <img [alt]="lstFriendListModelFA.fullName"
-                      [src]="lstFriendListModelFA.image" width="32"
+                    <img [alt]="lstFriendListModelFA.fullName" [src]="lstFriendListModelFA.image" width="32"
                       style="vertical-align: middle" />
                     <span class="image-text">{{lstFriendListModelFA.fullName}}</span>
                   </td>
                   <td>
-                      {{lstFriendListModelFA.friendRequestFlagTitle}}
+                    {{lstFriendListModelFA.friendRequestFlagTitle}}
                   </td>
                   <td>
                     {{lstFriendListModelFA.email}}
