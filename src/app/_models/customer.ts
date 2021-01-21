@@ -1,15 +1,24 @@
 import { ActivationEnd } from '@angular/router';
+import { documents } from '../_models/documents';
+import { customer_Wallet } from '../_models/customer_wallet';
 
-export class CustomerList{
+export class AdminCustomerListDAO{
     id?:string;
-    fullName?:string;
-    Image?:string;
-    phoneNumber?:string;
+    full_Name?:string;
+    image?:string;
+    phone?:string;
     email:string;
     Username?:string;
-    createDate: Date;
+    created_at: Date;
+    updated_at: Date;
     active:boolean;
+    documents:documents;
+    customer_Wallet:customer_Wallet;
+    
+
 }
+
+
 
 export class CustomerDetailsFA{
 

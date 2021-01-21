@@ -10,6 +10,111 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+
+    //----------------------------------------------------------------
+    {
+      title: true,
+      name: 'vehicles'
+    },
+    {
+      name: 'Vehicle',
+      url: '/vehicles',
+      icon: 'fa fa-motorcycle',
+      children: [
+        {
+          name: 'Vehicles',
+          url: '/vehicles',
+          icon: 'fa fa-bicycle'
+        },
+  
+      ]
+    },
+    //----------------------------------------------------------------
+
+  //----------------------------------------------------------------
+  {
+    title: true,
+    name: 'customers'
+  },
+  {
+    name: 'Customer',
+    url: '/customers',
+    icon: 'icon-people',
+    children: [
+      // {
+      //   name: 'Info/Profile',
+      //   url: '/customers/customer-profile',
+      //   icon: 'icon-user'
+      // },
+      // {
+      //   name: 'Documents',
+      //   url: '/customers/customer-documents',
+      //   icon: 'icon-folder-alt'
+      // },
+      // {
+      //   name: 'Wallet',
+      //   url: '/customers/customer-wallet',
+      //   icon: 'icon-wallet'
+      // },
+      // {
+      //   name: 'Cards',
+      //   url: '/customers/customer-card',
+      //   icon: 'icon-credit-card'
+      // },
+      {
+        name: 'Customers',
+        url: '/customers',
+        icon: 'icon-star'
+      },
+    ]
+  },
+  //----------------------------------------------------------------
+
+  //----------------------------------------------------------------
+  {
+    title: true,
+    name: 'rides'
+  },
+  {
+    name: 'Ride',
+    url: '/rides',
+    icon: 'icon-shuffle',
+    children: [
+      {
+        name: 'Rides',
+        url: '/rides',
+        icon: 'icon-graph'
+      },
+      
+
+    ]
+  },
+  //----------------------------------------------------------------
+  //----------------------------------------------------------------
+  {
+    title: true,
+    name: 'scooters'
+  },
+  {
+    name: 'Scooter',
+    url: '/scooters',
+    icon: 'fa fa-motorcycle',
+    children: [
+      {
+        name: 'Scooters Info',
+        url: '/scooters',
+        icon: 'fa fa-bicycle'
+      },
+      {
+        name: 'Parking Zones',
+        url: '/scooters/parking-zones',
+        icon: 'fa fa-houzz'
+      },
+
+    ]
+  },
+  //----------------------------------------------------------------
+
   //----------------------------------------------------------------
   {
     title: true,
@@ -31,70 +136,49 @@ export const navItems: INavData[] = [
         icon: 'icon-star'
       },
 
-
     ]
   },
   //----------------------------------------------------------------
 
   //----------------------------------------------------------------
-  {
-    title: true,
-    name: 'customers'
-  },
-  {
-    name: 'Customer',
-    url: '/customers',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Customers',
-        url: '/customers',
-        icon: 'icon-star'
-      },
+  // {
+  //   title: true,
+  //   name: 'cashbacks'
+  // },
+  // {
+  //   name: 'Cashback',
+  //   url: '/cashbacks',
+  //   icon: 'icon-star',
+  //   children: [
+  //     {
+  //       name: 'Cashbacks',
+  //       url: '/cashbacks',
+  //       icon: 'icon-star'
+  //     },
 
-    ]
-  },
-  //----------------------------------------------------------------
-
-  //----------------------------------------------------------------
-  {
-    title: true,
-    name: 'cashbacks'
-  },
-  {
-    name: 'Cashback',
-    url: '/cashbacks',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Cashbacks',
-        url: '/cashbacks',
-        icon: 'icon-star'
-      },
-
-    ]
-  },
+  //   ]
+  // },
   //----------------------------------------------------------------
 
 
   //----------------------------------------------------------------
-  {
-    title: true,
-    name: 'transactions'
-  },
-  {
-    name: 'Transactions',
-    url: '/transactions',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Transactions',
-        url: '/transactions',
-        icon: 'icon-star'
-      },
+  // {
+  //   title: true,
+  //   name: 'transactions'
+  // },
+  // {
+  //   name: 'Transactions',
+  //   url: '/transactions',
+  //   icon: 'icon-star',
+  //   children: [
+  //     {
+  //       name: 'Transactions',
+  //       url: '/transactions',
+  //       icon: 'icon-star'
+  //     },
 
-    ]
-  },
+  //   ]
+  // },
   //----------------------------------------------------------------
 
 
@@ -337,3 +421,8 @@ export const navItems: INavData[] = [
   //   attributes: { target: '_blank', rel: 'noopener' }
   // }
 ];
+
+
+
+
+

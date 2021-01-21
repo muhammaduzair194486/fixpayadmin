@@ -27,7 +27,7 @@ export class AuthenticationService {
     }
 
     login(userName: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/api/Authenticate/authenticate`, { userName, password }, { withCredentials: true })
+        return this.http.post<any>(`${environment.apiUrl}/api/AdminUsers/authenticate`, { userName, password }, { withCredentials: true })
             .pipe(map(Users => {
                 localStorage.setItem("token",Users.jwtToken);
                 localStorage.setItem("currentUser", JSON.stringify(Users));
@@ -39,14 +39,14 @@ export class AuthenticationService {
     
 
     logout() {
-        this.http.post<any>(`${environment.apiUrl}/api/Authenticate/revoke-token`, {}, { withCredentials: true }).subscribe();
+        this.http.post<any>(`${environment.apiUrl}/api/AdminUsers/revoke-token`, {}, { withCredentials: true }).subscribe();
         this.stopRefreshTokenTimer();
         this.currentUserSubject.next(null);
         this.router.navigate(['/login']);
     }
 
     refreshToken() {
-        return this.http.post<any>(`${environment.apiUrl}/api/Authenticate/refresh-token`, {}, { withCredentials: true })
+        return this.http.post<any>(`${environment.apiUrl}/api/AdminUsers/refresh-token`, {}, { withCredentials: true })
             .pipe(map((user) => {
                 localStorage.setItem("currentUser", JSON.stringify(user));
                 this.currentUserSubject.next(user);

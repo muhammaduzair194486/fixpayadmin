@@ -29,6 +29,8 @@ export class CustomerDetailsComponent implements OnInit {
   @ViewChild('dt2') table2: Table;
   @ViewChild('dt3') table3: Table;
 
+  msgs:string;
+
 
   constructor(
     private _customersService: CustomersService,

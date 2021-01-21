@@ -25,6 +25,11 @@ export class AddMerchantComponent implements OnInit {
   lstFileDetails: any;
   msgs: Message[];
 
+  value1:string;
+  value2:string;
+  value3:string;
+  value5:string;
+
   public message: string;
   public progress: number;
   @Output() public onUploadFinished = new EventEmitter();

@@ -27,9 +27,15 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import {InputTextModule} from 'primeng/inputtext';
 import {MessagesModule} from 'primeng/messages';
 import {InputSwitchModule} from 'primeng/inputswitch';
+
+
 //ThemeRouting
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { CustomerDocumentsComponent } from './customer-documents/customer-documents.component';
+import { CustomerWalletComponent } from './customer-wallet/customer-wallet.component';
+import { CustomerCardComponent } from './customer-card/customer-card.component';
 
 @NgModule({
     imports: [
@@ -56,8 +62,8 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
           TabViewModule,
           FormsModule
     ],
-    declarations: [ CustomersComponent, CustomerDetailsComponent ],
-    bootstrap:    [ CustomersComponent, CustomerDetailsComponent ],
+    declarations: [ CustomersComponent, CustomerDetailsComponent, CustomerProfileComponent, CustomerDocumentsComponent, CustomerWalletComponent, CustomerCardComponent ],
+    bootstrap:    [ CustomersComponent, CustomerDetailsComponent, CustomerProfileComponent ],
     providers: [
       CustomersService,
       { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [CustomersService] },

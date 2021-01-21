@@ -15,6 +15,8 @@ import { TransactionListAFA,TransactionListWTWAFA } from '../../_models/transact
 })
 export class TransactionsComponent implements OnInit {
 
+  loading: boolean = true;
+
   @ViewChild('dt1') table: Table;
 
   lstTransactionListAFA:TransactionListAFA[];

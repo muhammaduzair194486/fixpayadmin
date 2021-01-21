@@ -18,4 +18,76 @@ div.p-toast-top-right {
     top:60px !important;
  }
 
+ p-dialog .p-dialog-content {
+    overflow-y: initial !important; 
+}
+
+//---------for vehicles.component.html--start---
+section#vehicles-main-sections .p-dropdown {
+    width: 100%;
+}
+
+section#vehicles-main-sections :host ::ng-deep .p-button {
+    margin: 0 .5rem 0 0;
+    min-width: 10rem;
+}
+
+section#vehicles-main-sections p {
+    margin: 0;
+}
+
+section#vehicles-main-sections .confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section#vehicles-main-sections :host ::ng-deep .p-dialog .p-button {
+    min-width: 6rem;
+}
+
+section#vehicles-main-sections .p-fluid .p-button {
+    width: 47%;
+}
+
+section#vehicles-main-sections .card {
+    padding: 2%;
+}
+
+
+:host ::ng-deep .p-dropdown {
+    width: 14rem;
+}
+
+.country-item-value {
+    img.flag {
+        width: 17px;
+    }
+}
+
+form.add-vehicle-form .p-inputtext{
+    width: 100%;
+  }
+
+
+//---------for vehicles.component.html--end---
+
+//---------for customers.component.html--start---
+section#Customers-sections .p-datatable .p-datatable-thead > tr > th {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+section#Customers-sections .p-datatable .p-datatable-tbody > tr > td {
+    font-size: 14px;
+}
+
+section#Customers-sections .p-datatable table {
+    width: 104%;
+}
+//---------for customers.component.html--end---
+
+
+
+
     
